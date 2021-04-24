@@ -55,7 +55,8 @@ public struct TicketStore<Ticket, Value> where Ticket: Comparable {
 
 	// Removing Tickets and Values
 	//------------------------------------------------------------------------------------
-	func filter(_ isIncluded: (TicketStore<Ticket, Value>.Element) throws -> Bool) rethrows -> TicketStore<Ticket, Value> { }
+	func filterTickets(_ isIncluded: Ticket) throws -> Bool) rethrows -> TicketStore<Ticket, Value> { }
+	func filterValues(_ isIncluded: Value) throws -> Bool) rethrows -> TicketStore<Ticket, Value> { }
 
 	@discardableResult
 	mutating func removeValue(forTicket ticket: Ticket) -> Value? { }
