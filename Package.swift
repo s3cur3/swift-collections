@@ -54,6 +54,7 @@ let package = Package(
     .library(name: "Collections", targets: ["Collections"]),
     .library(name: "DequeModule", targets: ["DequeModule"]),
     .library(name: "OrderedCollections", targets: ["OrderedCollections"]),
+    .library(name: "TicketStore", targets: ["TicketStore"]),
 
     .executable(name: "swift-collections-benchmark", targets: ["swift-collections-benchmark"]),
   ],
@@ -67,6 +68,7 @@ let package = Package(
       dependencies: [
         "DequeModule",
         "OrderedCollections",
+        "TicketStore"
       ],
       path: "Sources/Collections",
       swiftSettings: settings),
@@ -124,6 +126,15 @@ let package = Package(
     .testTarget(
       name: "OrderedCollectionsTests",
       dependencies: ["OrderedCollections", "CollectionsTestSupport"],
+      swiftSettings: settings),
+
+    // TicketStore<Ticket, Value>
+    .target(
+      name: "TicketStore",
+      swiftSettings: settings),
+    .testTarget(
+      name: "TicketStoreTests",
+      dependencies: ["TicketStore", "CollectionsTestSupport"],
       swiftSettings: settings),
   ],
   cxxLanguageStandard: .cxx1z
